@@ -8,12 +8,9 @@
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-  <a class="skip-link" href="#main">Skip to content</a>
-
   <header class="site-header">
     <div class="container header-inner">
       <a class="brand" href="index.html">Jayden H. Cooper</a>
-      <button class="nav-toggle" aria-controls="primary-nav" aria-expanded="false">Menu</button>
       <nav id="primary-nav" class="primary-nav" aria-label="Primary">
         <ul>
           <li><a href="index.html">Home</a></li>
@@ -59,15 +56,7 @@
   </footer>
 
   <script>
-    (function () {
-      const btn = document.querySelector('.nav-toggle');
-      const nav = document.getElementById('primary-nav');
-      btn.addEventListener('click', function () {
-        const expanded = btn.getAttribute('aria-expanded') === 'true';
-        btn.setAttribute('aria-expanded', String(!expanded));
-        nav.classList.toggle('open');
-      });
-    })();
+    // Set copyright year
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 </body>
