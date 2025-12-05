@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Portfolio — Jayden Henry Cooper</title>
+  <meta name="description" content="Portfolio of projects by Jayden Henry Cooper.">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-grid">
+      <a class="brand" href="index.html">Jayden H. Cooper</a>
+      <nav class="main-nav" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <button class="nav-toggle" aria-controls="main-nav" aria-expanded="false">Menu</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <h1>Portfolio</h1>
+    <p class="lede">Selected projects — case studies and prototypes.</p>
+
+    <section class="projects-grid">
+      <article class="project">
+        <img src="images/project-1.svg" alt="Campus Study Planner screenshot">
+        <h3>Campus Study Planner</h3>
+        <p>Design + front-end implementation of a planner that helps students schedule study sessions.</p>
+        <p><a href="#" class="link-inline">Read case study →</a></p>
+      </article>
+
+      <article class="project">
+        <img src="images/project-2.svg" alt="Project two screenshot">
+        <h3>Design System Starter</h3>
+        <p>Started a small design system and component library to speed up consistent UI development.</p>
+      </article>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; <span id="year"></span> Jayden Henry Cooper</p>
+    </div>
+  </footer>
+
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>

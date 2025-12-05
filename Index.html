@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Jayden Henry Cooper — Home</title>
+  <meta name="description" content="Jayden Henry Cooper — portfolio, resume, and projects.">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-grid">
+      <a class="brand" href="index.html">Jayden H. Cooper</a>
+      <nav class="main-nav" aria-label="Main navigation" id="main-nav">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <button class="nav-toggle" aria-controls="main-nav" aria-expanded="false">Menu</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero container" aria-labelledby="hero-title">
+      <div class="hero-grid">
+        <div>
+          <h1 id="hero-title">Hi — I'm Jayden Henry Cooper</h1>
+          <p class="lede">I build thoughtful, accessible web experiences. I combine user-centered design with front-end development to make clear, usable interfaces.</p>
+          <p><a class="btn" href="portfolio.html">See my work</a> <a class="btn ghost" href="about.html">Learn more</a></p>
+        </div>
+        <div class="hero-image">
+          <img src="images/headshot.svg" alt="Headshot illustration of Jayden Henry Cooper">
+        </div>
+      </div>
+    </section>
+
+    <section class="featured container" aria-labelledby="featured-title">
+      <h2 id="featured-title">Featured project</h2>
+      <article class="project-card">
+        <img src="images/project-1.svg" alt="Screenshot of featured project">
+        <div class="project-copy">
+          <h3>Campus Study Planner</h3>
+          <p>A responsive web tool that helps students plan study sessions and track assignments. I designed the UI and implemented the responsive front-end using semantic HTML and CSS grid.</p>
+          <p><a href="portfolio.html" class="link-inline">View more projects →</a></p>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; <span id="year"></span> Jayden Henry Cooper — Built with HTML &amp; CSS</p>
+      <nav class="footer-nav" aria-label="Footer">
+        <a href="https://github.com/" target="_blank" rel="noopener">GitHub</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const btn = document.querySelector('.nav-toggle');
+    const nav = document.querySelector('.main-nav');
+    btn.addEventListener('click', () => {
+      const expanded = btn.getAttribute('aria-expanded') === 'true' || false;
+      btn.setAttribute('aria-expanded', !expanded);
+      nav.classList.toggle('open');
+    });
+  </script>
+</body>
+</html>
