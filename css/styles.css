@@ -86,6 +86,14 @@ body{
   margin: 0 auto;
 }
 
+/* Center the internal content of the featured card */
+.featured h2 { text-align: center; }
+.featured .project-card { text-align: center; }
+.featured .project-card figure { margin: 0 auto 12px; }
+.featured .project-card img { margin: 0 auto; display: block; }
+.featured .project-card .project-copy { text-align: center; }
+.featured .project-card .link-inline { display: inline-block; }
+
 .featured h2, .page-card h1, .post h1{
   font-family:var(--font-heading);
   color:#163233;
