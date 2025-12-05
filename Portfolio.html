@@ -3,50 +3,72 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Portfolio — Jayden Henry Cooper</title>
-  <meta name="description" content="Portfolio of projects by Jayden Henry Cooper.">
+  <title>Portfolio — Jayden H. Cooper</title>
+  <meta name="description" content="Portfolio: selected projects and case studies by Jayden H. Cooper.">
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
   <header class="site-header">
-    <div class="container header-grid">
+    <div class="container header-inner">
       <a class="brand" href="index.html">Jayden H. Cooper</a>
-      <nav class="main-nav" aria-label="Main navigation">
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="portfolio.html">Portfolio</a>
-        <a href="contact.html">Contact</a>
+      <button class="nav-toggle" aria-controls="primary-nav" aria-expanded="false">Menu</button>
+      <nav id="primary-nav" class="primary-nav" aria-label="Primary">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="portfolio.html" aria-current="page">Portfolio</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
       </nav>
-      <button class="nav-toggle" aria-controls="main-nav" aria-expanded="false">Menu</button>
     </div>
   </header>
 
-  <main class="container">
-    <h1>Portfolio</h1>
-    <p class="lede">Selected projects — case studies and prototypes.</p>
+  <main id="main" class="site-main container">
+    <header class="page-header">
+      <h1>Portfolio</h1>
+      <p class="lede">Selected work — each piece includes design goals, process, and outcomes.</p>
+    </header>
 
-    <section class="projects-grid">
-      <article class="project">
-        <img src="images/project-1.svg" alt="Campus Study Planner screenshot">
-        <h3>Campus Study Planner</h3>
-        <p>Design + front-end implementation of a planner that helps students schedule study sessions.</p>
-        <p><a href="#" class="link-inline">Read case study →</a></p>
+    <section class="projects-grid" aria-label="Projects">
+      <article class="project" aria-labelledby="proj1">
+        <figure>
+          <img src="images/project-1.jpg" alt="Campus Study Planner project screenshot">
+          <figcaption>Campus Study Planner — responsive dashboard</figcaption>
+        </figure>
+        <h3 id="proj1">Campus Study Planner</h3>
+        <p>Overview: scheduler for students. My role: UI design and front-end implementation.</p>
       </article>
 
-      <article class="project">
-        <img src="images/project-2.svg" alt="Project two screenshot">
-        <h3>Design System Starter</h3>
-        <p>Started a small design system and component library to speed up consistent UI development.</p>
+      <article class="project" aria-labelledby="proj2">
+        <figure>
+          <img src="images/project-2.jpg" alt="Design System Starter preview">
+          <figcaption>Design System Starter — component examples</figcaption>
+        </figure>
+        <h3 id="proj2">Design System Starter</h3>
+        <p>Overview: initial design tokens and component examples to ensure consistency across interfaces.</p>
       </article>
     </section>
   </main>
 
   <footer class="site-footer">
-    <div class="container">
-      <p>&copy; <span id="year"></span> Jayden Henry Cooper</p>
+    <div class="container footer-inner">
+      <p>&copy; <span id="year"></span> Jayden H. Cooper</p>
     </div>
   </footer>
 
-  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  <script>
+    (function () {
+      const btn = document.querySelector('.nav-toggle');
+      const nav = document.getElementById('primary-nav');
+      btn.addEventListener('click', function () {
+        const expanded = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', String(!expanded));
+        nav.classList.toggle('open');
+      });
+    })();
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>

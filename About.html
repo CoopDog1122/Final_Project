@@ -3,63 +3,86 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>About — Jayden Henry Cooper</title>
-  <meta name="description" content="About Jayden — background, skills, and experience.">
+  <title>About — Jayden H. Cooper</title>
+  <meta name="description" content="About Jayden H. Cooper: background, skills, and education in interaction design and front-end development.">
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
   <header class="site-header">
-    <div class="container header-grid">
+    <div class="container header-inner">
       <a class="brand" href="index.html">Jayden H. Cooper</a>
-      <nav class="main-nav" aria-label="Main navigation">
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="portfolio.html">Portfolio</a>
-        <a href="contact.html">Contact</a>
+      <button class="nav-toggle" aria-controls="primary-nav" aria-expanded="false">Menu</button>
+      <nav id="primary-nav" class="primary-nav" aria-label="Primary">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html" aria-current="page">About</a></li>
+          <li><a href="portfolio.html">Portfolio</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
       </nav>
-      <button class="nav-toggle" aria-controls="main-nav" aria-expanded="false">Menu</button>
     </div>
   </header>
 
-  <main class="container">
-    <section class="about-hero" aria-labelledby="about-title">
-      <h1 id="about-title">About Me</h1>
-      <div class="about-grid">
-        <img src="images/headshot.svg" alt="Headshot illustration of Jayden Henry Cooper" class="about-headshot">
-        <div>
-          <p>I'm a college student studying interaction design and front-end development. I enjoy turning research and user needs into simple, usable interfaces. My strengths include HTML/CSS, responsive layout, and clear content strategy.</p>
-          <h3>Skills</h3>
-          <ul>
-            <li>Semantic HTML5</li>
-            <li>Responsive CSS (Flexbox & Grid)</li>
-            <li>Accessible UI patterns</li>
-            <li>Figma prototyping</li>
-          </ul>
-        </div>
+  <main id="main" class="site-main container">
+    <header class="page-header">
+      <h1>About</h1>
+      <p class="lede">Briefly: I’m a student of interaction design and front-end dev. I make interfaces that are useful and accessible.</p>
+    </header>
+
+    <section class="about-grid" aria-labelledby="skills-heading">
+      <figure class="about-photo">
+        <img src="images/headshot.jpg" alt="Headshot of Jayden H. Cooper">
+      </figure>
+
+      <div>
+        <h2 id="skills-heading">Skills & Focus</h2>
+        <p>I specialize in accessible front-end interfaces, responsive layouts using CSS Grid and Flexbox, and clear content strategy. I prototype in Figma and test with users when possible.</p>
+
+        <h3>Technical skills</h3>
+        <ul>
+          <li>HTML5 & semantic markup</li>
+          <li>Responsive CSS (Grid & Flexbox)</li>
+          <li>Basic JavaScript for accessibility & interactivity</li>
+          <li>Figma prototyping & component design</li>
+        </ul>
       </div>
     </section>
 
-    <section class="experience" aria-labelledby="exp-title">
-      <h2 id="exp-title">Education & Experience</h2>
+    <section class="experience" aria-labelledby="education-heading">
+      <h2 id="education-heading">Education & Experience</h2>
       <div class="card-grid">
-        <div class="card">
-          <h4>Interaction Design — University</h4>
-          <p>Relevant coursework: UX design, front-end development, usability testing.</p>
-        </div>
-        <div class="card">
-          <h4>Project — Campus Study Planner</h4>
-          <p>Led the UI design and implemented the responsive front-end for the project prototype.</p>
-        </div>
+        <article class="card">
+          <h3>Interaction Design — University</h3>
+          <p>Relevant coursework: UX methods, usability testing, front-end development.</p>
+        </article>
+
+        <article class="card">
+          <h3>Selected project: Campus Study Planner</h3>
+          <p>Led UI / front-end implementation for a semester-long project focused on student workflows and calendars.</p>
+        </article>
       </div>
     </section>
   </main>
 
   <footer class="site-footer">
-    <div class="container">
-      <p>&copy; <span id="year"></span> Jayden Henry Cooper</p>
+    <div class="container footer-inner">
+      <p>&copy; <span id="year"></span> Jayden H. Cooper</p>
     </div>
   </footer>
 
-  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  <script>
+    (function () {
+      const btn = document.querySelector('.nav-toggle');
+      const nav = document.getElementById('primary-nav');
+      btn.addEventListener('click', function () {
+        const expanded = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', String(!expanded));
+        nav.classList.toggle('open');
+      });
+    })();
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>

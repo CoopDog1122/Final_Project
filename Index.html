@@ -3,69 +3,73 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Jayden Henry Cooper — Home</title>
-  <meta name="description" content="Jayden Henry Cooper — portfolio, resume, and projects.">
+  <title>Jayden H. Cooper — Home</title>
+  <meta name="description" content="Jayden Henry Cooper — portfolio and front-end projects. Accessible, responsive site and design portfolio.">
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-  <header class="site-header">
-    <div class="container header-grid">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header" role="banner">
+    <div class="container header-inner">
       <a class="brand" href="index.html">Jayden H. Cooper</a>
-      <nav class="main-nav" aria-label="Main navigation" id="main-nav">
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="portfolio.html">Portfolio</a>
-        <a href="contact.html">Contact</a>
+
+      <button class="nav-toggle" aria-controls="primary-nav" aria-expanded="false">Menu</button>
+
+      <nav id="primary-nav" class="primary-nav" role="navigation" aria-label="Primary">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="portfolio.html">Portfolio</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
       </nav>
-      <button class="nav-toggle" aria-controls="main-nav" aria-expanded="false">Menu</button>
     </div>
   </header>
 
-  <main>
-    <section class="hero container" aria-labelledby="hero-title">
-      <div class="hero-grid">
-        <div>
-          <h1 id="hero-title">Hi — I'm Jayden Henry Cooper</h1>
-          <p class="lede">I build thoughtful, accessible web experiences. I combine user-centered design with front-end development to make clear, usable interfaces.</p>
-          <p><a class="btn" href="portfolio.html">See my work</a> <a class="btn ghost" href="about.html">Learn more</a></p>
-        </div>
-        <div class="hero-image">
-          <img src="images/headshot.svg" alt="Headshot illustration of Jayden Henry Cooper">
-        </div>
+  <main id="main" class="site-main" role="main">
+    <section class="hero container" aria-labelledby="hero-heading">
+      <div class="hero-content">
+        <h1 id="hero-heading">Hi — I'm <span class="name">Jayden H. Cooper</span></h1>
+        <p class="lede">I design accessible, responsive interfaces and build them with semantic HTML & CSS. I focus on clarity, usability, and practical design systems.</p>
+        <p class="actions"><a class="btn" href="portfolio.html">See my work</a> <a class="btn ghost" href="about.html">About me</a></p>
       </div>
+
+      <figure class="hero-figure" aria-hidden="false">
+        <img src="images/headshot.jpg" alt="Headshot of Jayden H. Cooper, smiling, chest-up" width="480" height="480">
+        <figcaption class="visually-hidden">Headshot — Jayden H. Cooper</figcaption>
+      </figure>
     </section>
 
-    <section class="featured container" aria-labelledby="featured-title">
-      <h2 id="featured-title">Featured project</h2>
-      <article class="project-card">
-        <img src="images/project-1.svg" alt="Screenshot of featured project">
+    <section class="featured container" aria-labelledby="featured-heading">
+      <h2 id="featured-heading">Featured project</h2>
+
+      <article class="project-card" aria-labelledby="proj-title-1">
+        <figure>
+          <img src="images/project-1.jpg" alt="Screenshot: Campus Study Planner dashboard showing calendar and tasks">
+          <figcaption>Campus Study Planner — dashboard screenshot</figcaption>
+        </figure>
         <div class="project-copy">
-          <h3>Campus Study Planner</h3>
-          <p>A responsive web tool that helps students plan study sessions and track assignments. I designed the UI and implemented the responsive front-end using semantic HTML and CSS grid.</p>
-          <p><a href="portfolio.html" class="link-inline">View more projects →</a></p>
+          <h3 id="proj-title-1">Campus Study Planner</h3>
+          <p>A responsive planning tool for students to schedule study sessions, track deadlines, and set priorities. I handled UI design, mobile layout, and front-end implementation.</p>
+          <p><a class="link-inline" href="portfolio.html">View full portfolio →</a></p>
         </div>
       </article>
     </section>
+
   </main>
 
-  <footer class="site-footer">
-    <div class="container">
-      <p>&copy; <span id="year"></span> Jayden Henry Cooper — Built with HTML &amp; CSS</p>
-      <nav class="footer-nav" aria-label="Footer">
-        <a href="https://github.com/" target="_blank" rel="noopener">GitHub</a>
+  <footer class="site-footer" role="contentinfo">
+    <div class="container footer-inner">
+      <p>&copy; <span id="year"></span> Jayden H. Cooper — Built with HTML &amp; CSS</p>
+      <nav aria-label="Footer">
+        <ul class="footer-links">
+          <li><a href="https://github.com/" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+          <li><a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+        </ul>
       </nav>
     </div>
   </footer>
 
   <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-    const btn = document.querySelector('.nav-toggle');
-    const nav = document.querySelector('.main-nav');
-    btn.addEventListener('click', () => {
-      const expanded = btn.getAttribute('aria-expanded') === 'true' || false;
-      btn.setAttribute('aria-expanded', !expanded);
-      nav.classList.toggle('open');
-    });
-  </script>
-</body>
-</html>
+    // Accessible nav
