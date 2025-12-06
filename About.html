@@ -1,77 +1,68 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>About — Jayden H. Cooper</title>
-  <meta name="description" content="About Jayden H. Cooper: background, skills, and education in interaction design and front-end development.">
-  <link rel="stylesheet" href="css/styles.css">
-</head>
-<body>
-  <header class="site-header">
-    <div class="container header-inner">
-      <a class="brand" href="index.html">Jayden H. Cooper</a>
-      <nav id="primary-nav" class="primary-nav" aria-label="Primary">
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html" aria-current="page">About</a></li>
-          <li><a href="portfolio.html">Portfolio</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </nav>
-    </div>
+<main id="main" class="site-main container">
+  <header class="page-header">
+    <h1>About</h1>
+    <p class="lede">
+      I’m a Game Design & Development major at Michigan State University focused on creating interactive experiences, gameplay systems, and clean, accessible user interfaces—both in Unity and on the web.
+    </p>
   </header>
 
-  <main id="main" class="site-main container">
-    <header class="page-header">
-      <h1>About</h1>
-      <p class="lede">Briefly: I’m a student of interaction design and front-end dev. I make interfaces that are useful and accessible.</p>
-    </header>
+  <section class="about-grid" aria-labelledby="skills-heading">
+    <figure class="about-photo">
+      <img src="IMG_2640.JPG" alt="Headshot of Jayden H. Cooper">
+    </figure>
 
-    <section class="about-grid" aria-labelledby="skills-heading">
-      <figure class="about-photo">
-        <img src="IMG_2640.JPG" alt="Headshot of Jayden H. Cooper">
-      </figure>
+    <div>
+      <h2 id="skills-heading">Skills & Focus</h2>
+      <p>
+        My main interests include gameplay mechanics, vehicle physics, UI/UX design for games, 
+        and building smooth, responsive interactions. I enjoy creating systems that feel good 
+        to control—whether it’s a drifting mechanic, a HUD layout, or a clean web interface.
+      </p>
 
-      <div>
-        <h2 id="skills-heading">Skills & Focus</h2>
-        <p>I specialize in accessible front-end interfaces, responsive layouts using CSS Grid and Flexbox, and clear content strategy. I prototype in Figma and test with users when possible.</p>
-
-        <h3>Technical skills</h3>
-        <ul>
-          <li>HTML5 & semantic markup</li>
-          <li>Responsive CSS (Grid & Flexbox)</li>
-          <li>Basic JavaScript for accessibility & interactivity</li>
-          <li>Figma prototyping & component design</li>
-        </ul>
-      </div>
-    </section>
-
-    <section class="experience" aria-labelledby="education-heading">
-      <h2 id="education-heading">Education & Experience</h2>
-      <div class="card-grid">
-        <article class="card">
-          <h3>Interaction Design — University</h3>
-          <p>Relevant coursework: UX methods, usability testing, front-end development.</p>
-        </article>
-
-        <article class="card">
-          <h3>Selected project: Campus Study Planner</h3>
-          <p>Led UI / front-end implementation for a semester-long project focused on student workflows and calendars.</p>
-        </article>
-      </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <p>&copy; <span id="year"></span> Jayden H. Cooper</p>
+      <h3>Technical Skills</h3>
+      <ul>
+        <li>Unity (C#, physics, input systems, camera rigs)</li>
+        <li>Gameplay mechanics & prototyping</li>
+        <li>Vehicle handling design & tuning</li>
+        <li>UI/UX design for games (HUDs, menus, feedback systems)</li>
+        <li>Figma prototyping & interface layout</li>
+        <li>HTML5 & semantic markup</li>
+        <li>Responsive CSS (Flexbox & Grid)</li>
+      </ul>
     </div>
-  </footer>
+  </section>
 
-  <script>
-    // Set copyright year
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
-</body>
-</html>
+  <section class="experience" aria-labelledby="education-heading">
+    <h2 id="education-heading">Education & Experience</h2>
+    <div class="card-grid">
+
+      <article class="card">
+        <h3>Michigan State University — Game Design & Development</h3>
+        <p>
+          Coursework includes game mechanics, level design, Unity development, prototyping, 
+          interface design, and production pipelines.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>Featured Project: 3D Drifting Game</h3>
+        <p>
+          A physics-focused drifting game built in Unity. I developed custom handling, traction 
+          tuning, scoring systems, and UI elements such as speed, RPM, and drift score feedback. 
+          This project strengthened my skills in gameplay loops, physics behavior, and clean, 
+          responsive UI design inside a 3D environment.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>Additional Web & Interface Work</h3>
+        <p>
+          Outside of game development, I build accessible front-end interfaces using HTML, CSS, 
+          and UX-driven design principles. I use Figma for prototyping and plan layouts 
+          intentionally to support clarity and usability.
+        </p>
+      </article>
+
+    </div>
+  </section>
+</main>
