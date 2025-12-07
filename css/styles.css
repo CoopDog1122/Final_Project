@@ -185,6 +185,14 @@ p, li, a { font-size:1.08rem; }
   display: grid;
   grid-template-columns: 1fr 1fr 1.1fr;
   gap: 16px;
+
+  .form-row-message {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 16px;
+    align-items: flex-end;
+    margin-bottom: 0;
+  }
   margin-bottom: 20px;
 }
 
