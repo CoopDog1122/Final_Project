@@ -29,7 +29,9 @@
     </header>
 
     <!-- Netlify Forms: will automatically email submissions to jayden.h.cooper@live.com -->
-    <form class="contact-form" name="contact" method="POST" netlify aria-label="Contact form">
+    <form class="contact-form" name="contact" method="POST" data-netlify="true" aria-label="Contact form">
+      <input type="hidden" name="form-name" value="contact" />
+      
       <div class="form-row">
         <label for="name">Name</label>
         <input id="name" name="name" type="text" required>
