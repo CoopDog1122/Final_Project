@@ -1,55 +1,82 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Contact — Jayden H. Cooper</title>
-  <meta name="description" content="Contact Jayden H. Cooper for collaboration, freelance, or project inquiries.">
-  <link rel="stylesheet" href="css/styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - My Blog</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header class="site-header">
-    <div class="container header-inner">
-      <a class="brand" href="index.html">Jayden H. Cooper</a>
-      <nav id="primary-nav" class="primary-nav" aria-label="Primary">
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="portfolio.html">Portfolio</a></li>
-          <li><a href="contact.html" aria-current="page">Contact</a></li>
-        </ul>
-      </nav>
+    <header>
+        <h1>My Personal Blog</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <article>
+            <h2>Contact Me</h2>
+            <p>If you’re a fellow car or truck enthusiast, or you just want to say hi, I’d love to hear from you! Use the form below to get in touch.</p>
+
+            <!-- Contact Form -->
+            <form name="contact" method="POST" data-netlify="true">
+                <input type="hidden" name="form-name" value="contact" />
+
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="reason">Reason for Contact:</label>
+                <select id="reason" name="reason">
+                    <option value="hi">Saying Hi</option>
+                    <option value="contractor">Looking for a Contractor</option>
+                    <option value="interview">Interested in an Interview</option>
+                </select>
+
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" rows="5" placeholder="Write your message here..."></textarea>
+
+                <button type="submit">Submit</button>
+            </form>
+        </article>
+    </main>
+
+    <!-- Thank You Popup -->
+    <div id="contact-thankyou" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%;
+      background:rgba(0,0,0,0.6); text-align:center; padding-top:100px;">
+        <div style="background:#fff; padding:20px; border-radius:10px; display:inline-block;">
+            <h2>🎉 Thank You!</h2>
+            <p>Your message has been sent successfully. I’ll get back to you soon.</p>
+            <button onclick="document.getElementById('contact-thankyou').style.display='none'">Close</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Jayden Cooper</p>
+    </footer>
+
     <script>
-      // Set copyright year
-      document.getElementById('year').textContent = new Date().getFullYear();
+    // Contact form popup
+    document.querySelector('form[name="contact"]').addEventListener("submit", function(e) {
+      e.preventDefault();
+      const form = e.target;
+      const data = new FormData(form);
+
+      fetch("/", {
+        method: "POST",
+        body: data
+      }).then(() => {
+        form.reset();
+        document.getElementById("contact-thankyou").style.display = "block";
+      }).catch((error) => alert(error));
+    });
     </script>
-        // Send to Netlify
-        fetch('/', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-          body: encoded.toString()
-        })
-        .then((response) => {
-          if (response.ok) return response.text();
-          throw new Error('Network response was not ok');
-        })
-        .then(() => {
-          // Replace form with a friendly success message
-          const success = document.createElement('div');
-          success.className = 'form-success page-card';
-          success.innerHTML = `
-            <h2>Thanks — message sent</h2>
-            <p>Thanks for reaching out, ${name}. I&#39;ll get back to you at ${email} soon.</p>
-            <p>If you don&#39;t see a reply, you can email me directly at <a href="mailto:jayden.h.cooper@live.com">jayden.h.cooper@live.com</a>.</p>
-          `;
-          form.parentNode.replaceChild(success, form);
-        })
-        .catch((err) => {
-          console.error(err);
-          alert('Submission failed — please try again or email jayden.h.cooper@live.com directly.');
-        });
-      });
-    })();
-  </script>
 </body>
 </html>
