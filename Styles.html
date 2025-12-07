@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Styles — Jayden H. Cooper</title>
+  <meta name="description" content="View the site's stylesheet (css/styles.css) inline for reference.">
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    /* Inline styles for the code viewer */
+    .code-tabs{ display:flex; gap:8px; justify-content:center; margin:18px 0 }
+    .code-tabs button{ padding:8px 12px; border-radius:8px; border:1px solid rgba(0,0,0,0.06); background:#fff; cursor:pointer }
+    .code-area{ max-width:1000px; margin:0 auto; padding:18px }
+    pre.code-block{ background:#0f1720; color:#dbeafe; padding:18px; border-radius:8px; overflow:auto; max-height:60vh }
+    .preview-sample{ margin:18px auto; max-width:760px; padding:20px; border-radius:12px; background:var(--card-bg); box-shadow:var(--shadow) }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html">Jayden H. Cooper</a>
+      <nav id="primary-nav" class="primary-nav" aria-label="Primary">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="portfolio.html">Portfolio</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="styles.html" aria-current="page">Styles</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="site-main container">
+    <header class="page-header">
+      <h1>Site Styles</h1>
+      <p class="lede">Reference for the site's CSS. Use the tabs to switch between a small preview and the raw stylesheet.</p>
+    </header>
+
+    <div class="code-tabs">
+      <button id="tab-preview">Preview</button>
+      <button id="tab-code" aria-pressed="false">Code</button>
+    </div>
+
+    <div class="code-area">
+      <div id="preview" class="tab-content">
+        <div class="preview-sample">
+          <h3>Preview Card</h3>
+          <p>This is a sample card to show the site styles in action. Headings, text, and buttons use the same styles as the rest of the site.</p>
+          <button class="btn">Primary button</button>
+        </div>
+      </div>
+
+      <div id="code" class="tab-content" style="display:none">
+        <pre class="code-block"><code id="cssCode"></code></pre>
+      </div>
+    </div>
+
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="container footer-inner">
+      <p>&copy; <span id="year"></span> Jayden H. Cooper — Built with HTML &amp; CSS</p>
+      <nav aria-label="Footer">
+        <ul class="footer-links">
+          <li><a href="https://github.com/" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+          <li><a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+        </ul>
+      </nav>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    // Tabs
+    const tPreview = document.getElementById('tab-preview');
+    const tCode = document.getElementById('tab-code');
+    const sPreview = document.getElementById('preview');
+    const sCode = document.getElementById('code');
+    tPreview.addEventListener('click', () => { sPreview.style.display='block'; sCode.style.display='none'; tCode.setAttribute('aria-pressed','false'); tPreview.setAttribute('aria-pressed','true'); });
+    tCode.addEventListener('click', () => { sPreview.style.display='none'; sCode.style.display='block'; tPreview.setAttribute('aria-pressed','false'); tCode.setAttribute('aria-pressed','true'); loadCode(); });
+
+    // Load CSS file content via fetch and display inside code block
+    function loadCode(){
+      const el = document.getElementById('cssCode');
+      if (el.textContent.trim().length) return; // already loaded
+      fetch('css/styles.css').then(r => r.text()).then(text => {
+        // escape HTML
+        el.textContent = text;
+      }).catch(err => { el.textContent = 'Unable to load stylesheet: '+err; });
+    }
+  </script>
+</body>
+</html>
