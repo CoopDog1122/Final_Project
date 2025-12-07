@@ -1,82 +1,118 @@
 <!DOCTYPE html>
 <html lang="en">
+<!doctype html>
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact - My Blog</title>
-    <link rel="stylesheet" href="styles.css">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Contact — Jayden H. Cooper</title>
+    <meta name="description" content="Contact Jayden H. Cooper for collaboration, freelance, or project inquiries.">
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <header>
-        <h1>My Personal Blog</h1>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a class="brand" href="index.html">Jayden H. Cooper</a>
+            <nav id="primary-nav" class="primary-nav" aria-label="Primary"> 
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="contact.html" aria-current="page">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
-    <main>
-        <article>
-            <h2>Contact Me</h2>
-            <p>If you’re a fellow car or truck enthusiast, or you just want to say hi, I’d love to hear from you! Use the form below to get in touch.</p>
+    <main id="main" class="site-main container">
+        <header class="page-header">
+            <h1>Contact</h1>
+            <p class="lede">If you’re a fellow car or truck enthusiast, or you just want to say hi, I’d love to hear from you! Use the form below to get in touch or email <a href="mailto:jayden.h.cooper@live.com">jayden.h.cooper@live.com</a>.</p>
+        </header>
 
-            <!-- Contact Form -->
-            <form name="contact" method="POST" data-netlify="true">
+        <section class="page-card">
+            <!-- Contact Form (Netlify-ready) -->
+            <form name="contact" method="POST" data-netlify="true" class="contact-form" aria-label="Contact form">
                 <input type="hidden" name="form-name" value="contact" />
 
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="name" required>
+                <div class="form-row form-row-inline">
+                    <div class="form-field">
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
 
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
+                    <div class="form-field">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
 
-                <label for="reason">Reason for Contact:</label>
-                <select id="reason" name="reason">
-                    <option value="hi">Saying Hi</option>
-                    <option value="contractor">Looking for a Contractor</option>
-                    <option value="interview">Interested in an Interview</option>
-                </select>
+                    <div class="form-field">
+                        <label for="reason">Reason for Contact:</label>
+                        <select id="reason" name="reason">
+                            <option value="hi">Saying Hi</option>
+                            <option value="contractor">Looking for a Contractor</option>
+                            <option value="interview">Interested in an Interview</option>
+                        </select>
+                    </div>
+                </div>
 
-                <label for="message">Message:</label>
-                <textarea id="message" name="message" rows="5" placeholder="Write your message here..."></textarea>
+                <div class="form-row">
+                    <label for="message">Message:</label>
+                    <textarea id="message" name="message" rows="5" placeholder="Write your message here..."></textarea>
+                </div>
 
-                <button type="submit">Submit</button>
+                <div class="form-row">
+                    <button class="btn" type="submit">Submit</button>
+                </div>
             </form>
-        </article>
+        </section>
     </main>
 
-    <!-- Thank You Popup -->
-    <div id="contact-thankyou" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%;
-      background:rgba(0,0,0,0.6); text-align:center; padding-top:100px;">
-        <div style="background:#fff; padding:20px; border-radius:10px; display:inline-block;">
-            <h2>🎉 Thank You!</h2>
-            <p>Your message has been sent successfully. I’ll get back to you soon.</p>
-            <button onclick="document.getElementById('contact-thankyou').style.display='none'">Close</button>
+    <footer class="site-footer" role="contentinfo">
+        <div class="container footer-inner">
+            <p>&copy; <span id="year"></span> Jayden H. Cooper — Built with HTML &amp; CSS</p>
+            <nav aria-label="Footer">
+                <ul class="footer-links">
+                    <li><a href="https://github.com/" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+                    <li><a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+                </ul>
+            </nav>
         </div>
-    </div>
-
-    <footer>
-        <p>&copy; 2025 Jayden Cooper</p>
     </footer>
 
     <script>
-    // Contact form popup
-    document.querySelector('form[name="contact"]').addEventListener("submit", function(e) {
-      e.preventDefault();
-      const form = e.target;
-      const data = new FormData(form);
+        // Set copyright year
+        document.getElementById('year').textContent = new Date().getFullYear();
 
-      fetch("/", {
-        method: "POST",
-        body: data
-      }).then(() => {
-        form.reset();
-        document.getElementById("contact-thankyou").style.display = "block";
-      }).catch((error) => alert(error));
-    });
+        // JS progressive submit for Netlify: keep native behavior for no-JS
+        (function () {
+            const form = document.querySelector('form[name="contact"]');
+            if (!form || !window.fetch) return;
+
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+                const data = new FormData(form);
+                if (!data.get('form-name')) data.append('form-name', form.getAttribute('name') || 'contact');
+
+                fetch('/', { method: 'POST', body: data })
+                    .then(function (res) {
+                        if (res.ok) return res.text();
+                        throw new Error('Network response was not ok');
+                    })
+                    .then(function () {
+                        const success = document.createElement('div');
+                        success.className = 'form-success page-card';
+                        success.innerHTML = '<h2>Thanks — message sent</h2>' +
+                            '<p>Thanks for reaching out. I\'ll get back to you soon.</p>' +
+                            '<p>If you don\'t see a reply, email me at <a href="mailto:jayden.h.cooper@live.com">jayden.h.cooper@live.com</a>.</p>';
+                        form.parentNode.replaceChild(success, form);
+                    })
+                    .catch(function (err) {
+                        console.error(err);
+                        alert('Submission failed — please try again or email jayden.h.cooper@live.com directly.');
+                    });
+            });
+        })();
     </script>
 </body>
 </html>
