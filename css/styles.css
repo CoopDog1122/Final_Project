@@ -196,6 +196,11 @@ p, li, a { font-size:1.08rem; }
   margin-bottom: 20px;
 }
 
+/* Make the contact form top-row use two columns (name + email) */
+.contact-panel .form-row-inline {
+  grid-template-columns: 1fr 1fr;
+}
+
 .form-field {
   display: flex;
   flex-direction: column;
