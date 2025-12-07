@@ -37,23 +37,9 @@
       <p class="lede">Reference for the site's CSS. Use the tabs to switch between a small preview and the raw stylesheet.</p>
     </header>
 
-    <div class="code-tabs">
-      <button id="tab-preview">Preview</button>
-      <button id="tab-code" aria-pressed="false">Code</button>
-    </div>
-
     <div class="code-area">
-      <div id="preview" class="tab-content">
-        <div class="preview-sample">
-          <h3>Preview Card</h3>
-          <p>This is a sample card to show the site styles in action. Headings, text, and buttons use the same styles as the rest of the site.</p>
-          <button class="btn">Primary button</button>
-        </div>
-      </div>
-
-      <div id="code" class="tab-content" style="display:none">
-        <pre class="code-block"><code id="cssCode"></code></pre>
-      </div>
+      <h2 style="text-align:center; margin-bottom:12px;">Raw stylesheet (css/styles.css)</h2>
+      <pre class="code-block"><code id="cssCode"></code></pre>
     </div>
 
   </main>
@@ -72,23 +58,13 @@
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
-    // Tabs
-    const tPreview = document.getElementById('tab-preview');
-    const tCode = document.getElementById('tab-code');
-    const sPreview = document.getElementById('preview');
-    const sCode = document.getElementById('code');
-    tPreview.addEventListener('click', () => { sPreview.style.display='block'; sCode.style.display='none'; tCode.setAttribute('aria-pressed','false'); tPreview.setAttribute('aria-pressed','true'); });
-    tCode.addEventListener('click', () => { sPreview.style.display='none'; sCode.style.display='block'; tPreview.setAttribute('aria-pressed','false'); tCode.setAttribute('aria-pressed','true'); loadCode(); });
-
-    // Load CSS file content via fetch and display inside code block
-    function loadCode(){
+    // Load CSS file content via fetch and display inside code block immediately
+    (function loadCode(){
       const el = document.getElementById('cssCode');
-      if (el.textContent.trim().length) return; // already loaded
       fetch('css/styles.css').then(r => r.text()).then(text => {
-        // escape HTML
         el.textContent = text;
       }).catch(err => { el.textContent = 'Unable to load stylesheet: '+err; });
-    }
+    })();
   </script>
 </body>
 </html>
