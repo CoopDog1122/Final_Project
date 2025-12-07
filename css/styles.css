@@ -121,6 +121,24 @@ body{
 
 .lede{ color:var(--muted); margin-bottom:18px }
 
+/* About page: center the page header and make intro text black */
+.page-header {
+  text-align: center;
+  margin-bottom: 18px;
+}
+
+.page-header h1 {
+  color: #000000;
+  font-family: var(--font-heading);
+}
+
+.page-header .lede,
+.about-grid p {
+  color: #000000;
+  max-width: 760px;
+  margin: 0 auto 12px;
+}
+
 /* Project / Post card */
 .project-card{ padding:20px; border-radius:12px }
 .project-card img{ width:100%; height:auto; display:block; border-radius:10px; margin-bottom:14px }
