@@ -19,102 +19,10 @@
           <li><a href="contact.html" aria-current="page">Contact</a></li>
         </ul>
       </nav>
-    </div>
-  </header>
-
-  <main id="main" class="site-main container">
-    <header class="page-header">
-      <h1>Contact</h1>
-      <p class="lede">Interested in working together? Send a short message below or email <a href="mailto:Jayden.h.cooper@live.com">Jayden.h.cooper@live.com</a>.</p>
-    </header>
-
-    <!-- Netlify Forms: will automatically email submissions to jayden.h.cooper@live.com -->
-    <form class="contact-form" name="contact" method="POST" data-netlify="true" aria-label="Contact form">
-      <input type="hidden" name="form-name" value="contact" />
-      
-      <div class="form-row form-row-inline">
-        <div class="form-field">
-          <label for="name">Name</label>
-          <input id="name" name="name" type="text" required>
-        </div>
-
-        <div class="form-field">
-          <label for="email">Email</label>
-          <input id="email" name="email" type="email" required>
-        </div>
-
-        <div class="form-field">
-          <label for="reason">Reason for Contact</label>
-          <select id="reason" name="reason" required>
-            <option value="">Select a reason</option>
-            <option value="collaboration">Looking for Collaboration</option>
-            <option value="interview">Interested in an Interview</option>
-            <option value="other">Just Saying Hi</option>
-          </select>
-        </div>
-      </div>
-
-      <div class="form-row form-row-message">
-        <div class="form-field">
-          <label for="message">Message</label>
-          <textarea id="message" name="message" rows="6" placeholder="Write your message here..." required></textarea>
-        </div>
-
-        <button class="btn" type="submit">Submit</button>
-      </div>
-    </form>
-  </main>
-
-  <footer class="site-footer" role="contentinfo">
-    <div class="container footer-inner">
-      <p>&copy; <span id="year"></span> Jayden H. Cooper — Built with HTML &amp; CSS</p>
-      <nav aria-label="Footer">
-        <ul class="footer-links">
-          <li><a href="https://github.com/" target="_blank" rel="noopener noreferrer">GitHub</a></li>
-          <li><a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
-        </ul>
-      </nav>
-    </div>
-  </footer>
-
-  <script>
-    // Set copyright year
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
-  <script>
-    // AJAX submit handler for Netlify Forms
-    (function () {
-      const form = document.querySelector('form[name="contact"]');
-      if (!form) return;
-
-      // Optional: add a simple hidden honeypot field to deter bots
-      if (!form.querySelector('input[name="bot-field"]')) {
-        const bot = document.createElement('input');
-        bot.type = 'hidden';
-        bot.name = 'bot-field';
-        form.appendChild(bot);
-      }
-
-      form.addEventListener('submit', function (e) {
-        e.preventDefault();
-
-        // Basic client-side validation (HTML required attributes also help)
-        const name = form.querySelector('[name="name"]').value.trim();
-        const email = form.querySelector('[name="email"]').value.trim();
-        const message = form.querySelector('[name="message"]').value.trim();
-        if (!name || !email || !message) {
-          alert('Please complete name, email, and message.');
-          return;
-        }
-
-        const formData = new FormData(form);
-        // Ensure Netlify knows the form name (for AJAX submissions)
-        if (!formData.get('form-name')) formData.append('form-name', form.getAttribute('name') || 'contact');
-
-        // Convert FormData to URL-encoded string
-        const encoded = new URLSearchParams();
-        for (const pair of formData) encoded.append(pair[0], pair[1]);
-
+    <script>
+      // Set copyright year
+      document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
         // Send to Netlify
         fetch('/', {
           method: 'POST',
