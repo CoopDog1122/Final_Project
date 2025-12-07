@@ -273,3 +273,13 @@ p, li, a { font-size:1.08rem; }
   .primary-nav ul{ gap:12px }
   .container{ padding:0 14px }
 }
+
+/* Contact page: make the form appear free-floating (no white card or shadow) */
+.contact-panel { padding: 6px 0 28px; }
+.contact-form {
+  background: transparent;
+  box-shadow: none;
+  padding: 0;
+}
+.contact-panel .form-row { margin-bottom: 18px; }
+.contact-panel .btn { margin-top: 10px; }
